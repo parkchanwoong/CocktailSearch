@@ -10,6 +10,17 @@ import Alamofire
 import RxAlamofire
 import RxSwift
 
+enum Api {
+    case random
+    
+    var url: String {
+        switch self {
+        case .random:
+            return "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+        }
+    }
+}
+
 class Network {
     static let shared = Network()
     static let alamofire: Alamofire.Session = {
@@ -18,16 +29,20 @@ class Network {
         configuration.timeoutIntervalForRequest = 5
         return Alamofire.Session(configuration: configuration)
     }()
-//    let baseUrl = "https://www.thecocktaildb.com"
-    let baseUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-    //https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
-    private init() {
-
+    
+    private init() { }
+    
+    func getRandomCocktailUsingRxAlamofire() {
+        
+//        Network.alamofire.rx
+//            .response(.get, Api.random.url)
+//            .map{$0}
+//            .map{try JSONDecoder().decode(RandomCocktail.self, from: $0.1)}
     }
 
     func getRandomCocktail() -> Observable<RandomCocktail> {
         return Observable<RandomCocktail>.create({ observer -> Disposable in
-            let request = Network.alamofire.request(self.baseUrl)
+            let request = Network.alamofire.request(Api.random.url)
                 .validate(statusCode: 200..<300)
                 .responseData { (response) in
                     switch response.result {

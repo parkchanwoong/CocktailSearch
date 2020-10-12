@@ -11,19 +11,19 @@
         <!--Main View Controller-->
         <scene sceneID="4xH-gs-Qtq">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" id="AxC-En-Bv0" customClass="MainViewController" customModule="CocktailSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" id="AxC-En-Bv0" customClass="MainViewController" customModule="CocktailSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nQT-xN-zuc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4u-Rl-MvF">
-                                <rect key="frame" x="16" y="778" width="414" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="778" width="382" height="44"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0cy-8F-sxF"/>
                                 </constraints>
                                 <state key="normal" title="랜덤 칵테일 가져오기">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="칵테일 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiX-Ny-r5g">
@@ -45,9 +45,9 @@
                         <constraints>
                             <constraint firstItem="ymS-jN-dxF" firstAttribute="trailing" secondItem="iiX-Ny-r5g" secondAttribute="trailing" constant="16" id="0Mm-4S-GUl"/>
                             <constraint firstItem="HGg-co-Lqf" firstAttribute="centerX" secondItem="ymS-jN-dxF" secondAttribute="centerX" id="7pq-ia-iF3"/>
-                            <constraint firstItem="K4u-Rl-MvF" firstAttribute="trailing" secondItem="ymS-jN-dxF" secondAttribute="trailing" constant="16" id="HRT-XJ-dgp"/>
                             <constraint firstItem="K4u-Rl-MvF" firstAttribute="leading" secondItem="ymS-jN-dxF" secondAttribute="leading" constant="16" id="ML7-xa-PEy"/>
                             <constraint firstItem="iiX-Ny-r5g" firstAttribute="leading" secondItem="ymS-jN-dxF" secondAttribute="leading" constant="16" id="bju-cW-Qa6"/>
+                            <constraint firstItem="ymS-jN-dxF" firstAttribute="trailing" secondItem="K4u-Rl-MvF" secondAttribute="trailing" constant="16" id="cMl-tt-pSE"/>
                             <constraint firstItem="iiX-Ny-r5g" firstAttribute="top" secondItem="ymS-jN-dxF" secondAttribute="top" constant="48" id="l4L-xq-IcA"/>
                             <constraint firstItem="HGg-co-Lqf" firstAttribute="centerY" secondItem="ymS-jN-dxF" secondAttribute="centerY" id="lBM-hJ-BSb"/>
                             <constraint firstItem="ymS-jN-dxF" firstAttribute="bottom" secondItem="K4u-Rl-MvF" secondAttribute="bottom" constant="40" id="vUf-04-F4D"/>
@@ -65,8 +65,14 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
