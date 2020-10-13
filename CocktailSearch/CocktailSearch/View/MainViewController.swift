@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
+import Kingfisher
 
 class MainViewController: UIViewController, ViewModelBindableType {
     var viewModel: MainViewModel!
@@ -29,10 +30,13 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .bind(to: productLabel.rx.text)
             .disposed(by: rx.disposeBag)
 
-//        viewModel
-//            .drinkDriver
-//            .drive(productLabel.rx.text)
-//            .disposed(by: rx.disposeBag)
+        viewModel.imageName
+            .map { URL(string: $0)}
+            .subscribe(onNext: { [unowned self] value in
+                self.productImageView.kf.setImage(with: value)
+            })
+            .disposed(by: rx.disposeBag)
+
     }
 
 }

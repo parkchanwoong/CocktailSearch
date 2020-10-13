@@ -14,7 +14,7 @@ import NSObject_Rx
 class MainViewModel: HasDisposeBag {
     
     var drinkName = PublishSubject<String>()
-    private var imageName = PublishSubject<String>()
+    var imageName = PublishSubject<String>()
 
 
 //    var drinkDriver: Driver<String> {
@@ -32,15 +32,9 @@ class MainViewModel: HasDisposeBag {
                 })
                 .disposed(by: self.disposeBag)
 
-//            Network.shared.getRandomCocktail()
-//                .subscribe(onNext: { value in
-//                    print(value)
-//                })
-//                .disposed(by: self.disposeBag)
-
-        
             return Observable<Void>.just(())
         }
     }
+
 }
 
