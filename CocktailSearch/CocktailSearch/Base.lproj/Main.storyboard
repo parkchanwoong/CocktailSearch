@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AxC-En-Bv0">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController storyboardIdentifier="Main" id="AxC-En-Bv0" customClass="MainViewController" customModule="CocktailSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nQT-xN-zuc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4u-Rl-MvF">
-                                <rect key="frame" x="16" y="778" width="382" height="44"/>
+                                <rect key="frame" x="16" y="694" width="343" height="44"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0cy-8F-sxF"/>
@@ -27,16 +27,15 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="칵테일 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiX-Ny-r5g">
-                                <rect key="frame" x="16" y="92" width="382" height="26.5"/>
+                                <rect key="frame" x="16" y="92" width="343" height="26.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HGg-co-Lqf">
-                                <rect key="frame" x="57" y="228" width="300" height="450"/>
+                                <rect key="frame" x="16" y="138.66666666666666" width="343" height="372.66666666666674"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="RWC-IB-lq7"/>
-                                    <constraint firstAttribute="height" constant="450" id="exV-gg-TIm"/>
+                                    <constraint firstAttribute="width" secondItem="HGg-co-Lqf" secondAttribute="height" multiplier="23:25" id="oTY-PS-kSE"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -44,12 +43,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ymS-jN-dxF" firstAttribute="trailing" secondItem="iiX-Ny-r5g" secondAttribute="trailing" constant="16" id="0Mm-4S-GUl"/>
+                            <constraint firstItem="HGg-co-Lqf" firstAttribute="top" secondItem="iiX-Ny-r5g" secondAttribute="bottom" constant="20" id="6PK-Ga-SgT"/>
+                            <constraint firstItem="ymS-jN-dxF" firstAttribute="trailing" secondItem="HGg-co-Lqf" secondAttribute="trailing" constant="16" id="7EV-QB-ZDx"/>
                             <constraint firstItem="HGg-co-Lqf" firstAttribute="centerX" secondItem="ymS-jN-dxF" secondAttribute="centerX" id="7pq-ia-iF3"/>
                             <constraint firstItem="K4u-Rl-MvF" firstAttribute="leading" secondItem="ymS-jN-dxF" secondAttribute="leading" constant="16" id="ML7-xa-PEy"/>
                             <constraint firstItem="iiX-Ny-r5g" firstAttribute="leading" secondItem="ymS-jN-dxF" secondAttribute="leading" constant="16" id="bju-cW-Qa6"/>
                             <constraint firstItem="ymS-jN-dxF" firstAttribute="trailing" secondItem="K4u-Rl-MvF" secondAttribute="trailing" constant="16" id="cMl-tt-pSE"/>
                             <constraint firstItem="iiX-Ny-r5g" firstAttribute="top" secondItem="ymS-jN-dxF" secondAttribute="top" constant="48" id="l4L-xq-IcA"/>
-                            <constraint firstItem="HGg-co-Lqf" firstAttribute="centerY" secondItem="ymS-jN-dxF" secondAttribute="centerY" id="lBM-hJ-BSb"/>
+                            <constraint firstItem="HGg-co-Lqf" firstAttribute="leading" secondItem="ymS-jN-dxF" secondAttribute="leading" constant="16" id="ovV-lk-uJZ"/>
                             <constraint firstItem="ymS-jN-dxF" firstAttribute="bottom" secondItem="K4u-Rl-MvF" secondAttribute="bottom" constant="40" id="vUf-04-F4D"/>
                         </constraints>
                     </view>

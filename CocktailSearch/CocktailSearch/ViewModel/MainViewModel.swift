@@ -16,14 +16,13 @@ class MainViewModel: HasDisposeBag {
     var drinkName = PublishSubject<String>()
     var imageName = PublishSubject<String>()
 
-
-//    var drinkDriver: Driver<String> {
-//        return drinkName.asDriver(onErrorJustReturn: "")
-//    }
+    /// 통신중을 나타내는 옵저버블 변수
+    var isNetworking = BehaviorRelay<Bool>(value: false)
 
     var getDateAction: CocoaAction {
         return CocoaAction {
 
+            self.isNetworking.accept(true)
             Network.shared.getRandomCocktailUsingRxAlamofire()
                 .subscribe(onNext: { [unowned self] value in
                     guard let drink = value?.drinks?.first else { return }
