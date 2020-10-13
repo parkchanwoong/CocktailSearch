@@ -14,7 +14,7 @@ import Kingfisher
 class MainViewController: UIViewController, ViewModelBindableType {
     var viewModel: MainViewModel!
 
-    var indicatorView: IndicatorView!
+    private var indicatorView: IndicatorView!
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var getCocktailButton: UIButton!
     @IBOutlet weak var productImageView: UIImageView!
@@ -22,9 +22,15 @@ class MainViewController: UIViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         self.indicatorView = IndicatorView.instanceFromNib() as? IndicatorView
         self.view.addSubview(indicatorView)
-        self.view.layoutSubviews()
+        
+        self.indicatorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.indicatorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        self.indicatorView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        self.indicatorView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+
         indicatorView.isHidden = true
     }
 

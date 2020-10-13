@@ -20,6 +20,7 @@ class IndicatorView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func layoutSubviews() {
