@@ -24,6 +24,15 @@ class MainViewController: UIViewController, ViewModelBindableType {
 
     func bindViewModel() {
         getCocktailButton.rx.action = viewModel.getDateAction
+        
+        viewModel.drinkName
+            .bind(to: productLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+
+//        viewModel
+//            .drinkDriver
+//            .drive(productLabel.rx.text)
+//            .disposed(by: rx.disposeBag)
     }
 
 }

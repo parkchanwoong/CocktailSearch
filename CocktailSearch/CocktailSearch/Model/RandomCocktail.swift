@@ -10,7 +10,7 @@ struct RandomCocktail: Codable {
 
     struct Items: Codable {
         let idDrink: String?
-        let strDring: String?
+        let strDrink: String?
         let strDrinkThumb: String?
     }
 }

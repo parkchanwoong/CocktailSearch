@@ -32,12 +32,11 @@ class Network {
     
     private init() { }
     
-    func getRandomCocktailUsingRxAlamofire() {
-        
-//        Network.alamofire.rx
-//            .response(.get, Api.random.url)
-//            .map{$0}
-//            .map{try JSONDecoder().decode(RandomCocktail.self, from: $0.1)}
+    func getRandomCocktailUsingRxAlamofire() -> Observable<RandomCocktail?> {
+        return Network.alamofire.rx
+            .responseData(.get, Api.random.url)
+            .map {try JSONDecoder().decode(RandomCocktail.self, from: $0.1)}
+            .catchErrorJustReturn(nil)
     }
 
     func getRandomCocktail() -> Observable<RandomCocktail> {
