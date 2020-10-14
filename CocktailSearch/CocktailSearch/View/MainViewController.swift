@@ -34,7 +34,22 @@ class MainViewController: UIViewController, ViewModelBindableType {
         indicatorView.isHidden = true
     }
 
+    private func initialNetworking() {
+        self.viewModel.isNetworking.accept(true)
+        Network.shared.getRandomCocktailUsingRxAlamofire()
+            .map { $0?.drinks?.first}
+            .subscribe(onNext: { [weak self] value in
+                guard let self = self else { return }
+                self.productLabel.text = value?.strDrink
+                self.productImageView.kf.setImage(with: URL(string: value?.strDrinkThumb ?? ""), completionHandler: { _ in
+                    self.viewModel.isNetworking.accept(false)
+                })
+            })
+            .disposed(by: rx.disposeBag)
+    }
+
     func bindViewModel() {
+
         getCocktailButton.rx.action = viewModel.getDateAction
 
         viewModel.isNetworking
@@ -48,12 +63,13 @@ class MainViewController: UIViewController, ViewModelBindableType {
         viewModel.imageName
             .map { URL(string: $0)}
             .subscribe(onNext: { [unowned self] value in
-
                 self.productImageView.kf.setImage(with: value, completionHandler:  { _ in
                     viewModel.isNetworking.accept(false)
                 })
             })
             .disposed(by: rx.disposeBag)
+
+        initialNetworking()
 
     }
 
