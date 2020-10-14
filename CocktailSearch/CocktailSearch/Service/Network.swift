@@ -12,11 +12,14 @@ import RxSwift
 
 enum Api {
     case random
+    case list
     
     var url: String {
         switch self {
         case .random:
             return "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+        case .list:
+            return ""
         }
     }
 }

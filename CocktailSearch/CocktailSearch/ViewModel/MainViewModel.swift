@@ -20,11 +20,12 @@ class MainViewModel: HasDisposeBag {
     var isNetworking = BehaviorRelay<Bool>(value: false)
 
     var getDateAction: CocoaAction {
-        return CocoaAction {
-
+        return CocoaAction { [weak self] _ in
+            guard let self = self else { return Observable<Void>.just(())}
             self.isNetworking.accept(true)
             Network.shared.getRandomCocktailUsingRxAlamofire()
-                .subscribe(onNext: { [unowned self] value in
+                .subscribe(onNext: { [weak self] value in
+                    guard let self = self else { return }
                     guard let drink = value?.drinks?.first else { return }
                     self.drinkName.onNext(drink.strDrink ?? "")
                     self.imageName.onNext(drink.strDrinkThumb ?? "")
