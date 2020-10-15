@@ -65,37 +65,6 @@
             </objects>
             <point key="canvasLocation" x="1465" y="659"/>
         </scene>
-        <!--리스트-->
-        <scene sceneID="ie9-QM-2KO">
-            <objects>
-                <viewController storyboardIdentifier="ListVC" id="VRD-bp-NwT" customClass="ListViewController" customModule="CocktailSearch" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vOZ-63-czI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvZ-mY-IWe">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="HaC-UW-neD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="jvZ-mY-IWe" firstAttribute="top" secondItem="HaC-UW-neD" secondAttribute="top" id="85o-sD-0ri"/>
-                            <constraint firstItem="HaC-UW-neD" firstAttribute="trailing" secondItem="jvZ-mY-IWe" secondAttribute="trailing" id="Fb8-Vs-qo9"/>
-                            <constraint firstItem="HaC-UW-neD" firstAttribute="bottom" secondItem="jvZ-mY-IWe" secondAttribute="bottom" id="ZHu-nq-dkB"/>
-                            <constraint firstItem="jvZ-mY-IWe" firstAttribute="leading" secondItem="HaC-UW-neD" secondAttribute="leading" id="h0N-ap-w67"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="리스트" image="list.number.ar" catalog="system" id="ULA-wC-Mpy"/>
-                    <navigationItem key="navigationItem" title="리스트" largeTitleDisplayMode="always" id="fKS-D7-o5J"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tvj-pK-K7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2250" y="1356"/>
-        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="MVN-Hd-4c7">
             <objects>
@@ -130,12 +99,22 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="VRD-bp-NwT" kind="relationship" relationship="rootViewController" id="ztv-36-S2k"/>
+                        <segue destination="ImG-fY-TTt" kind="relationship" relationship="rootViewController" id="8zP-oe-nIy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bc-Vv-zt0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1465" y="1349"/>
+        </scene>
+        <!--ListVC-->
+        <scene sceneID="WQt-Vj-7JG">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ListVC" storyboardName="ListViewController" referencedIdentifier="ListVC" id="ImG-fY-TTt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1oU-Dj-kjR"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBs-Ws-azq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2276" y="1325"/>
         </scene>
     </scenes>
     <resources>
@@ -149,9 +128,6 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

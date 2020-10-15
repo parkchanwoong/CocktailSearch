@@ -14,6 +14,8 @@
 		F429E1E4252DB9B5002D95B6 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429E1E3252DB9B5002D95B6 /* SceneCoordinator.swift */; };
 		F4550ACD253563B000C802A6 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4550ACC253563B000C802A6 /* IndicatorView.swift */; };
 		F4550AD0253563BF00C802A6 /* IndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4550ACF253563BF00C802A6 /* IndicatorView.xib */; };
+		F477BEAF25380B53009D1525 /* CocktailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477BEAE25380B53009D1525 /* CocktailInfo.swift */; };
+		F477BEBC25382013009D1525 /* ListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F477BEBB25382013009D1525 /* ListViewController.storyboard */; };
 		F48B5403252D914D00F9CE82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B5402252D914D00F9CE82 /* AppDelegate.swift */; };
 		F48B5405252D914D00F9CE82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B5404252D914D00F9CE82 /* SceneDelegate.swift */; };
 		F48B540A252D914D00F9CE82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F48B5408252D914D00F9CE82 /* Main.storyboard */; };
@@ -22,8 +24,9 @@
 		F48B541E252D919C00F9CE82 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B541D252D919C00F9CE82 /* MainViewController.swift */; };
 		F492E41B252D981200202CB2 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492E41A252D981200202CB2 /* ViewModelBindableType.swift */; };
 		F492E41E252D9EC500202CB2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492E41D252D9EC500202CB2 /* Network.swift */; };
-		F492E422252DA18E00202CB2 /* RandomCocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492E421252DA18E00202CB2 /* RandomCocktail.swift */; };
 		F492E425252DA7C300202CB2 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492E424252DA7C300202CB2 /* MainViewModel.swift */; };
+		F4E0487925382FF000E84B25 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E0487725382FF000E84B25 /* ListTableViewCell.swift */; };
+		F4E0487A25382FF000E84B25 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4E0487825382FF000E84B25 /* ListTableViewCell.xib */; };
 		F4FB9C312536D08000651C9D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB9C302536D08000651C9D /* ListViewController.swift */; };
 		F4FB9C342536D0C000651C9D /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB9C332536D0C000651C9D /* ListViewModel.swift */; };
 		F4FB9C372536D24A00651C9D /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB9C362536D24A00651C9D /* TabBarViewController.swift */; };
@@ -39,6 +42,8 @@
 		F429E1E3252DB9B5002D95B6 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		F4550ACC253563B000C802A6 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		F4550ACF253563BF00C802A6 /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
+		F477BEAE25380B53009D1525 /* CocktailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailInfo.swift; sourceTree = "<group>"; };
+		F477BEBB25382013009D1525 /* ListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListViewController.storyboard; sourceTree = "<group>"; };
 		F48B53FF252D914D00F9CE82 /* CocktailSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48B5402252D914D00F9CE82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F48B5404252D914D00F9CE82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,8 +54,9 @@
 		F48B541D252D919C00F9CE82 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F492E41A252D981200202CB2 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		F492E41D252D9EC500202CB2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		F492E421252DA18E00202CB2 /* RandomCocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCocktail.swift; sourceTree = "<group>"; };
 		F492E424252DA7C300202CB2 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F4E0487725382FF000E84B25 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		F4E0487825382FF000E84B25 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		F4FB9C302536D08000651C9D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F4FB9C332536D0C000651C9D /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		F4FB9C362536D24A00651C9D /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +91,68 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F477BEB225381F46009D1525 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F477BEB625381F8D009D1525 /* View */,
+				F477BEB825381F97009D1525 /* ViewModel */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F477BEB325381F67009D1525 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				F477BEB525381F86009D1525 /* View */,
+				F477BEB425381F7C009D1525 /* ViewModel */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		F477BEB425381F7C009D1525 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4FB9C332536D0C000651C9D /* ListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F477BEB525381F86009D1525 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4E0487525382F8100E84B25 /* Cell */,
+				F4FB9C302536D08000651C9D /* ListViewController.swift */,
+				F477BEBB25382013009D1525 /* ListViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F477BEB625381F8D009D1525 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F48B541D252D919C00F9CE82 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F477BEB825381F97009D1525 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F492E424252DA7C300202CB2 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F477BEBA25381FD7009D1525 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4FB9C362536D24A00651C9D /* TabBarViewController.swift */,
+				F4550ACC253563B000C802A6 /* IndicatorView.swift */,
+				F4550ACF253563BF00C802A6 /* IndicatorView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F48B53F6252D914D00F9CE82 = {
 			isa = PBXGroup;
 			children = (
@@ -106,11 +174,12 @@
 		F48B5401252D914D00F9CE82 /* CocktailSearch */ = {
 			isa = PBXGroup;
 			children = (
+				F477BEB325381F67009D1525 /* List */,
+				F477BEB225381F46009D1525 /* Main */,
 				F492E419252D97DF00202CB2 /* Service */,
 				F492E418252D97D700202CB2 /* Scene */,
-				F492E417252D97C700202CB2 /* View */,
-				F492E416252D97C000202CB2 /* ViewModel */,
-				F492E415252D97B800202CB2 /* Model */,
+				F492E417252D97C700202CB2 /* Common */,
+				F492E415252D97B800202CB2 /* Codable */,
 				F48B5402252D914D00F9CE82 /* AppDelegate.swift */,
 				F48B5404252D914D00F9CE82 /* SceneDelegate.swift */,
 				F48B5408252D914D00F9CE82 /* Main.storyboard */,
@@ -121,34 +190,21 @@
 			path = CocktailSearch;
 			sourceTree = "<group>";
 		};
-		F492E415252D97B800202CB2 /* Model */ = {
+		F492E415252D97B800202CB2 /* Codable */ = {
 			isa = PBXGroup;
 			children = (
-				F492E421252DA18E00202CB2 /* RandomCocktail.swift */,
+				F477BEAE25380B53009D1525 /* CocktailInfo.swift */,
 			);
-			path = Model;
+			path = Codable;
 			sourceTree = "<group>";
 		};
-		F492E416252D97C000202CB2 /* ViewModel */ = {
+		F492E417252D97C700202CB2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				F492E424252DA7C300202CB2 /* MainViewModel.swift */,
-				F4FB9C332536D0C000651C9D /* ListViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F492E417252D97C700202CB2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F48B541D252D919C00F9CE82 /* MainViewController.swift */,
+				F477BEBA25381FD7009D1525 /* View */,
 				F492E41A252D981200202CB2 /* ViewModelBindableType.swift */,
-				F4550ACC253563B000C802A6 /* IndicatorView.swift */,
-				F4550ACF253563BF00C802A6 /* IndicatorView.xib */,
-				F4FB9C302536D08000651C9D /* ListViewController.swift */,
-				F4FB9C362536D24A00651C9D /* TabBarViewController.swift */,
 			);
-			path = View;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		F492E418252D97D700202CB2 /* Scene */ = {
@@ -168,6 +224,15 @@
 				F492E41D252D9EC500202CB2 /* Network.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		F4E0487525382F8100E84B25 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F4E0487725382FF000E84B25 /* ListTableViewCell.swift */,
+				F4E0487825382FF000E84B25 /* ListTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,9 +295,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48B5419252D917500F9CE82 /* LaunchScreen.storyboard in Resources */,
+				F4E0487A25382FF000E84B25 /* ListTableViewCell.xib in Resources */,
 				F48B540C252D915100F9CE82 /* Assets.xcassets in Resources */,
 				F4550AD0253563BF00C802A6 /* IndicatorView.xib in Resources */,
 				F48B540A252D914D00F9CE82 /* Main.storyboard in Resources */,
+				F477BEBC25382013009D1525 /* ListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,14 +353,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F492E425252DA7C300202CB2 /* MainViewModel.swift in Sources */,
+				F4E0487925382FF000E84B25 /* ListTableViewCell.swift in Sources */,
 				F492E41E252D9EC500202CB2 /* Network.swift in Sources */,
 				F4FB9C342536D0C000651C9D /* ListViewModel.swift in Sources */,
+				F477BEAF25380B53009D1525 /* CocktailInfo.swift in Sources */,
 				F429E1DE252DB90D002D95B6 /* SceneCoordinatorType.swift in Sources */,
 				F48B541E252D919C00F9CE82 /* MainViewController.swift in Sources */,
 				F492E41B252D981200202CB2 /* ViewModelBindableType.swift in Sources */,
 				F429E1DB252DB849002D95B6 /* Scene.swift in Sources */,
 				F48B5403252D914D00F9CE82 /* AppDelegate.swift in Sources */,
-				F492E422252DA18E00202CB2 /* RandomCocktail.swift in Sources */,
 				F429E1E1252DB931002D95B6 /* TransitionModel.swift in Sources */,
 				F48B5405252D914D00F9CE82 /* SceneDelegate.swift in Sources */,
 				F4550ACD253563B000C802A6 /* IndicatorView.swift in Sources */,
