@@ -12,14 +12,14 @@ import RxSwift
 
 enum Api {
     case random
-    case list
+    case cocktailDetail(String)
     
     var url: String {
         switch self {
         case .random:
             return "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-        case .list:
-            return ""
+        case .cocktailDetail(let cocktailId):
+            return "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=\(cocktailId)"
         }
     }
 }
@@ -35,10 +35,17 @@ class Network {
     
     private init() { }
     
-    func getRandomCocktailUsingRxAlamofire() -> Observable<RandomCocktail?> {
+    func getRandomCocktailUsingRxAlamofire() -> Observable<CocktailInfo?> {
         return Network.alamofire.rx
             .responseData(.get, Api.random.url)
-            .map {try JSONDecoder().decode(RandomCocktail.self, from: $0.1)}
+            .map {try JSONDecoder().decode(CocktailInfo.self, from: $0.1)}
+            .catchErrorJustReturn(nil)
+    }
+
+    func cocktailInfo(id: String) -> Observable<CocktailInfo?> {
+        return Network.alamofire.rx
+            .responseData(.get, Api.cocktailDetail(id).url)
+            .map {try JSONDecoder().decode(CocktailInfo.self, from: $0.1)}
             .catchErrorJustReturn(nil)
     }
 }
