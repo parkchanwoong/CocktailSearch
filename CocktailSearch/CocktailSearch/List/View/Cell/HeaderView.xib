@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="HeaderView" id="iN0-l3-epB" customClass="HeaderView" customModule="CocktailSearch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3Z-AS-BZP" userLabel="contentsView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
+                    <subviews>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zu0-ms-v1e">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="341"/>
+                            <segments>
+                                <segment title="Alcoholic"/>
+                                <segment title="NonAlcoholic"/>
+                            </segments>
+                        </segmentedControl>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="zu0-ms-v1e" secondAttribute="bottom" id="MMt-jZ-fnz"/>
+                        <constraint firstItem="zu0-ms-v1e" firstAttribute="top" secondItem="b3Z-AS-BZP" secondAttribute="top" id="Se8-Di-cSR"/>
+                        <constraint firstItem="zu0-ms-v1e" firstAttribute="leading" secondItem="b3Z-AS-BZP" secondAttribute="leading" id="w7B-gb-2oS"/>
+                        <constraint firstAttribute="trailing" secondItem="zu0-ms-v1e" secondAttribute="trailing" id="wWW-el-1x7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="b3Z-AS-BZP" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="6sr-4Q-yKh"/>
+                <constraint firstItem="b3Z-AS-BZP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Onv-5L-qUS"/>
+                <constraint firstItem="b3Z-AS-BZP" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="T1E-al-krA"/>
+                <constraint firstItem="b3Z-AS-BZP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hkQ-14-1Uj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="contentsView" destination="b3Z-AS-BZP" id="JF9-lZ-AVY"/>
+                <outlet property="segmented" destination="zu0-ms-v1e" id="Aqv-V7-aHC"/>
+            </connections>
+            <point key="canvasLocation" x="124.6376811594203" y="-90.401785714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
