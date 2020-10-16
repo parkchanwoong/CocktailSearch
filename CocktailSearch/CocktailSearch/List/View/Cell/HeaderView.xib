@@ -14,11 +14,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3Z-AS-BZP" userLabel="contentsView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egv-3z-WXP" userLabel="contentsView">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zu0-ms-v1e">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="341"/>
+                        <segmentedControl contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zu0-ms-v1e">
+                            <rect key="frame" x="16" y="0.0" width="382" height="341"/>
                             <segments>
                                 <segment title="Alcoholic"/>
                                 <segment title="NonAlcoholic"/>
@@ -27,24 +27,23 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="zu0-ms-v1e" secondAttribute="bottom" id="MMt-jZ-fnz"/>
-                        <constraint firstItem="zu0-ms-v1e" firstAttribute="top" secondItem="b3Z-AS-BZP" secondAttribute="top" id="Se8-Di-cSR"/>
-                        <constraint firstItem="zu0-ms-v1e" firstAttribute="leading" secondItem="b3Z-AS-BZP" secondAttribute="leading" id="w7B-gb-2oS"/>
-                        <constraint firstAttribute="trailing" secondItem="zu0-ms-v1e" secondAttribute="trailing" id="wWW-el-1x7"/>
+                        <constraint firstAttribute="bottom" secondItem="zu0-ms-v1e" secondAttribute="bottom" id="3hy-gy-IyQ"/>
+                        <constraint firstItem="zu0-ms-v1e" firstAttribute="top" secondItem="Egv-3z-WXP" secondAttribute="top" id="dxq-r4-dCK"/>
+                        <constraint firstItem="zu0-ms-v1e" firstAttribute="leading" secondItem="Egv-3z-WXP" secondAttribute="leading" constant="16" id="dz8-A8-XC4"/>
+                        <constraint firstAttribute="trailing" secondItem="zu0-ms-v1e" secondAttribute="trailing" constant="16" id="im3-Wk-mKi"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="b3Z-AS-BZP" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="6sr-4Q-yKh"/>
-                <constraint firstItem="b3Z-AS-BZP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Onv-5L-qUS"/>
-                <constraint firstItem="b3Z-AS-BZP" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="T1E-al-krA"/>
-                <constraint firstItem="b3Z-AS-BZP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hkQ-14-1Uj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Egv-3z-WXP" secondAttribute="trailing" id="Srg-6s-fHp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Egv-3z-WXP" secondAttribute="bottom" id="UCS-56-c8k"/>
+                <constraint firstItem="Egv-3z-WXP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ddo-PW-Jbs"/>
+                <constraint firstItem="Egv-3z-WXP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hus-0g-shs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="contentsView" destination="b3Z-AS-BZP" id="JF9-lZ-AVY"/>
+                <outlet property="contentsView" destination="Egv-3z-WXP" id="KXN-Ve-Pnu"/>
                 <outlet property="segmented" destination="zu0-ms-v1e" id="Aqv-V7-aHC"/>
             </connections>
             <point key="canvasLocation" x="124.6376811594203" y="-90.401785714285708"/>

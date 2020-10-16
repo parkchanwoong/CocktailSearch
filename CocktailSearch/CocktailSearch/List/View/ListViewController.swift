@@ -49,9 +49,6 @@ extension ListViewController: UITableViewDataSource {
 
         let source = viewModel.items[indexPath.row].productImageName
         cell.itemImageView.kf.setImage(with: URL(string: source))
-//            = viewModel.items[indexPath.row].productName
-//            "셀 번호 :: \(indexPath.row)"
-
 
         return cell
     }

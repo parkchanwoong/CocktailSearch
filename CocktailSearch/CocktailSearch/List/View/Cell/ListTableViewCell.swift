@@ -7,18 +7,10 @@
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
+class ListTableViewCell: UITableViewCell, Resuable {
 
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
-
-    static var identifier: String {
-        return String(describing: self)
-    }
-
-    static var nib: UINib {
-        return UINib(nibName: String(describing: self), bundle: nil)
-    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

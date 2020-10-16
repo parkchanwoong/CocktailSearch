@@ -7,18 +7,10 @@
 
 import UIKit
 
-class HeaderView: UITableViewHeaderFooterView {
+class HeaderView: UITableViewHeaderFooterView, Resuable {
 
-    static var identifier: String {
-        return String(describing: self)
-    }
-
-    static var nib: UINib  {
-        return UINib(nibName: String(describing: self), bundle: nil)
-    }
-
-    @IBOutlet weak var contentsView: UIView!
     @IBOutlet weak var segmented: UISegmentedControl!
+    @IBOutlet weak var contentsView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,9 +19,4 @@ class HeaderView: UITableViewHeaderFooterView {
     static var height: CGFloat {
         return 44
     }
-//    var segmented: UISegmentedControl = {
-//        let s = UISegmentedControl(items: ["Alchole","NonAlchole"])
-//        return s
-//    }()
-
 }
