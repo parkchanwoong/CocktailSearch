@@ -10,16 +10,33 @@ import Alamofire
 import RxAlamofire
 import RxSwift
 
+enum AlcoholicType {
+    case alcoholic
+    case nonAlcholic
+
+    var alcholic: String {
+        switch self {
+        case .alcoholic:
+            return "Alcoholic"
+        case .nonAlcholic:
+            return "Non_Alcoholic"
+        }
+    }
+}
+
 enum Api {
     case random
     case cocktailDetail(String)
-    
+    case filterByAlcoholic(AlcoholicType)
+
     var url: String {
         switch self {
         case .random:
             return "https://www.thecocktaildb.com/api/json/v1/1/random.php"
         case .cocktailDetail(let cocktailId):
             return "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=\(cocktailId)"
+        case .filterByAlcoholic(let alcohol):
+            return "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=\(alcohol)"
         }
     }
 }
@@ -48,4 +65,12 @@ class Network {
             .map {try JSONDecoder().decode(CocktailInfo.self, from: $0.1)}
             .catchErrorJustReturn(nil)
     }
+
+    func getAlcoholNonAlcohol(alcoholicType: AlcoholicType) -> Observable<CocktailInfo?> {
+        return Network.alamofire.rx
+            .responseData(.get, Api.filterByAlcoholic(alcoholicType).url)
+            .map { try JSONDecoder().decode(CocktailInfo.self, from: $0.1)}
+            .catchErrorJustReturn(nil)
+    }
+
 }
