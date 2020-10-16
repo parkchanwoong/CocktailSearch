@@ -10,6 +10,7 @@
 		351CDB4F6AD434D62697AA9C /* Pods_CocktailSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22437647478E9C95FA6BCEA2 /* Pods_CocktailSearch.framework */; };
 		F403231025392DF1004BFEF9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403230F25392DF1004BFEF9 /* HeaderView.swift */; };
 		F403231325392E0C004BFEF9 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F403231225392E0C004BFEF9 /* HeaderView.xib */; };
+		F403231625396BEB004BFEF9 /* Reuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403231525396BEB004BFEF9 /* Reuseable.swift */; };
 		F429E1DB252DB849002D95B6 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429E1DA252DB849002D95B6 /* Scene.swift */; };
 		F429E1DE252DB90D002D95B6 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429E1DD252DB90D002D95B6 /* SceneCoordinatorType.swift */; };
 		F429E1E1252DB931002D95B6 /* TransitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429E1E0252DB931002D95B6 /* TransitionModel.swift */; };
@@ -40,6 +41,7 @@
 		96BDAFCAAB588D064556F7C6 /* Pods-CocktailSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocktailSearch.debug.xcconfig"; path = "Target Support Files/Pods-CocktailSearch/Pods-CocktailSearch.debug.xcconfig"; sourceTree = "<group>"; };
 		F403230F25392DF1004BFEF9 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F403231225392E0C004BFEF9 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		F403231525396BEB004BFEF9 /* Reuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reuseable.swift; sourceTree = "<group>"; };
 		F429E1DA252DB849002D95B6 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		F429E1DD252DB90D002D95B6 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		F429E1E0252DB931002D95B6 /* TransitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionModel.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				F477BEBA25381FD7009D1525 /* View */,
 				F492E41A252D981200202CB2 /* ViewModelBindableType.swift */,
+				F403231525396BEB004BFEF9 /* Reuseable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				F429E1DB252DB849002D95B6 /* Scene.swift in Sources */,
 				F48B5403252D914D00F9CE82 /* AppDelegate.swift in Sources */,
 				F429E1E1252DB931002D95B6 /* TransitionModel.swift in Sources */,
+				F403231625396BEB004BFEF9 /* Reuseable.swift in Sources */,
 				F48B5405252D914D00F9CE82 /* SceneDelegate.swift in Sources */,
 				F4550ACD253563B000C802A6 /* IndicatorView.swift in Sources */,
 				F4FB9C312536D08000651C9D /* ListViewController.swift in Sources */,
