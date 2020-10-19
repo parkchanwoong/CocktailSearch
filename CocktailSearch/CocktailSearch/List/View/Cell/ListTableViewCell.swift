@@ -22,5 +22,10 @@ class ListTableViewCell: UITableViewCell, Resuable {
 
         // Configure the view for the selected state
     }
+
+    func configure(_ info: AlcoholInfo) {
+        itemLabel.text = info.productName
+        itemImageView.kf.setImage(with: URL(string: info.productImageName))
+    }
     
 }
