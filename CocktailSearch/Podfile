@@ -13,6 +13,7 @@ target 'CocktailSearch' do
   pod 'Action'
   pod 'NSObject+Rx'
   pod 'Kingfisher'
+  pod 'RxDataSources'
 
   # Pods for CocktailSearch
 
