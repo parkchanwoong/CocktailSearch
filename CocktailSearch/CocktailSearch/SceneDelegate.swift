@@ -19,12 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         let coordinator = SceneCoordinator(window: window!)
 
-        let mainViewModel = MainViewModel()
+        let mainViewModel = MainViewModel(sceneCoordinator: coordinator)
         let main = Scene.main(mainViewModel).instantiate()
 
-        let listViewModel = ListViewModel()
+        let listViewModel = ListViewModel(sceneCoordinator: coordinator)
         let list = Scene.list(listViewModel).instantiate()
-        
+
         let scene = Scene.tabbar([main, list])
 
         coordinator.transition(to: scene, using: .root, animation: false)

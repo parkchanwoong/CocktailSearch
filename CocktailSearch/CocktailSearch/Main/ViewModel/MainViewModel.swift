@@ -11,7 +11,7 @@ import RxCocoa
 import Action
 import NSObject_Rx
 
-class MainViewModel: HasDisposeBag {
+class MainViewModel: CommonViewModel, HasDisposeBag {
     
     var drinkName = PublishSubject<String>()
     var imageName = PublishSubject<String>()

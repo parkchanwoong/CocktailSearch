@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class ListViewController: UIViewController, ViewModelBindableType {
 
@@ -19,6 +20,7 @@ class ListViewController: UIViewController, ViewModelBindableType {
 
         tableView.register(ListTableViewCell.nib, forCellReuseIdentifier: ListTableViewCell.identifier)
         tableView.register(HeaderView.nib, forHeaderFooterViewReuseIdentifier: HeaderView.identifier)
+        tableView.rx.setDelegate(self).disposed(by: rx.disposeBag)
     }
 
 
@@ -29,38 +31,25 @@ class ListViewController: UIViewController, ViewModelBindableType {
             }
             .disposed(by: rx.disposeBag)
 
+        Observable.zip(tableView.rx.modelSelected(AlcoholInfo.self),tableView.rx.itemSelected)
+            .do (onNext: { _, index in
+                self.tableView.deselectRow(at: index, animated: true)
+            })
+            .map { $0.0 }
+            .bind(to: viewModel.detailAction.inputs)
+            .disposed(by: rx.disposeBag)
     }
 }
 
-//extension ListViewController: UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel.items.count
-//    }
-
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier) as? ListTableViewCell else { return UITableViewCell() }
-//
-//        cell.itemLabel.text = viewModel.items[indexPath.row].productName
-//
-//        let source = viewModel.items[indexPath.row].productImageName
-//        cell.itemImageView.kf.setImage(with: URL(string: source))
-//
-//        return cell
-//    }
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
+extension ListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let v = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.identifier) as? HeaderView else { return UIView() }
         return v
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return HeaderView.height
-    }
-//}
-
-extension ListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 44
     }
 }

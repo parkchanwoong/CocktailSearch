@@ -8,6 +8,8 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
+import Action
 
 struct AlcoholInfo {
     var id: String = ""
@@ -15,12 +17,26 @@ struct AlcoholInfo {
     var productImageName: String = ""
 }
 
-class ListViewModel {
+typealias HeaderViewModel = AnimatableSectionModel<Int, HeaderModel>
+
+class ListViewModel: CommonViewModel {
+
+    override init(sceneCoordinator: SceneCoordinatorType) {
+        super.init(sceneCoordinator: sceneCoordinator)
+    }
 
     let disposeBag = DisposeBag()
 
-//    var rxdata = PublishSubject<[AlcoholInfo]>()
-//    var items = [AlcoholInfo]()
+    let datasource: RxTableViewSectionedAnimatedDataSource<HeaderViewModel> = {
+        let ds = RxTableViewSectionedAnimatedDataSource<HeaderViewModel>(configureCell: {
+            (datasource, tableView, indexPath, item) -> UITableViewCell in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
+
+            return cell
+        })
+
+        return ds
+    }()
 
     var alcoholInfo: Driver<[AlcoholInfo]> {
         return Network.shared.getAlcoholNonAlcohol(alcoholicType: AlcoholicType.alcoholic)
@@ -40,22 +56,11 @@ class ListViewModel {
             .asDriver(onErrorJustReturn: [])
     }
 
-//    func getData() -> Observable<[AlcoholInfo]> {
-//        Network.shared.getAlcoholNonAlcohol(alcoholicType: AlcoholicType.alcoholic)
-//            .map {$0?.drinks}
-//            .map { [weak self] drinks in
-//                guard let drinks = drinks else { return [AlcoholInfo]()}
-//                guard let self = self else { return [AlcoholInfo]()}
-//                for drink in drinks {
-//                    var item = AlcoholInfo()
-//                    item.id = drink.idDrink ?? ""
-//                    item.productName = drink.strDrink ?? ""
-//                    item.productImageName = drink.strDrinkThumb ?? ""
-//                    self.items.append(item)
-//                }
-//                self.rxdata.onNext(self.items)
-//                return self.items
-//            }.catchErrorJustReturn([AlcoholInfo]())
-//    }
-
+    lazy var detailAction: Action<AlcoholInfo,Void> = {
+        return Action { info in
+            let viewModel = DetailViewModel(sceneCoordinator: self.sceneCoordinator)
+            let scene = Scene.detail(viewModel)
+            return self.sceneCoordinator.transition(to: scene, using: .push, animation: true).asObservable().map { _ in }
+        }
+    }()
 }

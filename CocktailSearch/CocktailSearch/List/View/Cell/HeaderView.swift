@@ -6,6 +6,21 @@
 //
 
 import UIKit
+import RxDataSources
+
+class HeaderModel: Equatable, IdentifiableType {
+    static func == (lhs: HeaderModel, rhs: HeaderModel) -> Bool {
+        return lhs.identity == rhs.identity
+    }
+
+    var identity: String
+    var height: CGFloat
+
+    init(identity: String, height: CGFloat) {
+        self.identity = identity
+        self.height = height
+    }
+}
 
 class HeaderView: UITableViewHeaderFooterView, Resuable {
 
@@ -14,9 +29,5 @@ class HeaderView: UITableViewHeaderFooterView, Resuable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-
-    static var height: CGFloat {
-        return 44
     }
 }
