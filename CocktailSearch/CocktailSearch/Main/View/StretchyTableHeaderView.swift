@@ -34,7 +34,7 @@ class StretchyTableHeaderView: UIView {
 
         imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .yellow
+        imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFill
         containerView.addSubview(imageView)
     }

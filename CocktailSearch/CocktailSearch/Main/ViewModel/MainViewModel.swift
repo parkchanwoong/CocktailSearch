@@ -10,9 +10,37 @@ import RxSwift
 import RxCocoa
 import Action
 import NSObject_Rx
+import RxDataSources
+
+typealias SectionModel = AnimatableSectionModel<MainHeaderModel, MainModel>
 
 class MainViewModel: CommonViewModel, HasDisposeBag {
-    
+    let dataSource: RxTableViewSectionedAnimatedDataSource<SectionModel> = {
+        let ds = RxTableViewSectionedAnimatedDataSource<SectionModel> (configureCell: { (datasource, tableView, index, item) -> UITableViewCell in
+            switch item.type {
+            case .category, .alcoholic , .glass, .instructions:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: index) as! NormalTableViewCell
+                cell.title.text = item.title
+                return cell
+            }
+        })
+
+        return ds
+    }()
+
+
+
+    var contentsBehaviorSubject = BehaviorSubject<Void>(value: ())
+//    var contentsData: Driver<[SectionModel]> {
+//        return contentsBehaviorSubject
+//            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+//            .flatMap { _ in Network.shared.getRandomCocktailUsingRxAlamofire()}
+//            .map { ( value ) -> [SectionModel] in
+//                var sectionList = [SectionModel]()
+//                return sectionList
+//            }
+//    }
+
     var drinkName = PublishSubject<String>()
     var imageName = PublishSubject<String>()
 

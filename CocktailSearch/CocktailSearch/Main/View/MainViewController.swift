@@ -18,9 +18,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
     private var stretchyTableHeaderView: StretchyTableHeaderView!
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var getCocktailButton: UIButton!
-    @IBOutlet weak var productImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +26,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
 
         self.indicatorView = IndicatorView.instanceFromNib() as? IndicatorView
         stretchyTableHeaderView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 350))
-        
+
         self.tableView.tableHeaderView = stretchyTableHeaderView
         self.view.addSubview(indicatorView)
 
@@ -51,7 +49,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .map { $0?.drinks?.first}
             .subscribe(onNext: { [weak self] value in
                 guard let self = self else { return }
-//                self.productLabel.text = value?.strDrink
+                self.navigationItem.title = value?.strDrink ?? ""
                 self.stretchyTableHeaderView.imageView.kf.setImage(with: URL(string: value?.strDrinkThumb ?? ""), completionHandler: { _ in
                     self.viewModel.isNetworking.accept(false)
                 })
@@ -61,11 +59,11 @@ class MainViewController: UIViewController, ViewModelBindableType {
 
     func bindViewModel() {
 
-//        getCocktailButton.rx.action = viewModel.getDateAction
+        getCocktailButton.rx.action = viewModel.getDateAction
 
-//        viewModel.isNetworking
-//            .bind(to: indicatorView.rx.isActive)
-//            .disposed(by: rx.disposeBag)
+        viewModel.isNetworking
+            .bind(to: indicatorView.rx.isActive)
+            .disposed(by: rx.disposeBag)
 
 //        viewModel.drinkName
 //            .bind(to: productLabel.rx.text)
@@ -98,11 +96,13 @@ extension MainViewController: UITableViewDataSource {
 }
 
 extension MainViewController: UITableViewDelegate {
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
 }
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let headerView = self.tableView.tableHeaderView as! StretchyTableHeaderView
         stretchyTableHeaderView.scrollViewDidScroll(scrollView: scrollView)
     }
 }
