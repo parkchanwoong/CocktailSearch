@@ -27,9 +27,10 @@ extension Scene {
 
         case .main(let viewModel):
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard var mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC") as? MainViewController else { fatalError() }
+            guard let navi = storyboard.instantiateViewController(withIdentifier: "mainNavi") as? UINavigationController else { fatalError() }
+            guard var mainVC = navi.viewControllers.first as? MainViewController else { fatalError() }
             mainVC.bind(viewModel: viewModel)
-            return mainVC
+            return navi
 
         case .list(let viewModel):
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
