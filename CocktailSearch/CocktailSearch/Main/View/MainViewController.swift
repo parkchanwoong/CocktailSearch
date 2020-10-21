@@ -31,9 +31,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
         self.view.addSubview(indicatorView)
 
 
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(ListTableViewCell.nib, forCellReuseIdentifier: ListTableViewCell.identifier)
+        tableView.rx.setDelegate(self).disposed(by: rx.disposeBag)
+        tableView.register(NormalTableViewCell.nib, forCellReuseIdentifier: NormalTableViewCell.identifier)
         
         self.indicatorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.indicatorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
@@ -65,6 +64,18 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .bind(to: indicatorView.rx.isActive)
             .disposed(by: rx.disposeBag)
 
+        let temp = [RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
+                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
+                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
+                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
+                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
+                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
+                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)])]
+
+        Observable.just(temp)
+            .bind(to: tableView.rx.items(dataSource: viewModel.dataSource))
+            .disposed(by: rx.disposeBag)
+
 //        viewModel.drinkName
 //            .bind(to: productLabel.rx.text)
 //            .disposed(by: rx.disposeBag)
@@ -83,22 +94,10 @@ class MainViewController: UIViewController, ViewModelBindableType {
     }
 
 }
-extension MainViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 80
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell
-        cell?.textLabel?.text = "\(indexPath.row)"
-        return cell ?? UITableViewCell()
-    }
-}
-
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return viewModel.dataSource[indexPath.section].items[indexPath.row].height
     }
 }
 extension MainViewController: UIScrollViewDelegate {

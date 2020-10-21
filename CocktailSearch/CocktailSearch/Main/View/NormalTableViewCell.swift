@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NormalTableViewCell: UITableViewCell {
+class NormalTableViewCell: UITableViewCell, Resuable {
 
     @IBOutlet weak var title: UILabel!
 
