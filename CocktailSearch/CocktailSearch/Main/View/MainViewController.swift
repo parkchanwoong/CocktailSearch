@@ -13,12 +13,14 @@ import Kingfisher
 
 class MainViewController: UIViewController, ViewModelBindableType {
     var viewModel: MainViewModel!
+    private var lastContentOffset: CGFloat = 0
 
     private var indicatorView: IndicatorView!
     private var stretchyTableHeaderView: StretchyTableHeaderView!
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var getCocktailButton: UIButton!
+    @IBOutlet weak var cocktailButtonBottomConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,5 +105,17 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         stretchyTableHeaderView.scrollViewDidScroll(scrollView: scrollView)
+
+        if lastContentOffset < scrollView.contentOffset.y {
+            self.cocktailButtonBottomConstraint.constant = -TabBarViewController.barHeight
+        } else {
+            self.cocktailButtonBottomConstraint.constant = 10
+        }
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            self.view.layoutIfNeeded()
+        }
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastContentOffset = scrollView.contentOffset.y
     }
 }
