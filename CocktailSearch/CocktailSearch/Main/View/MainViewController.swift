@@ -30,6 +30,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
         stretchyTableHeaderView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 350))
 
         self.tableView.tableHeaderView = stretchyTableHeaderView
+        self.tableView.tableFooterView = UIView()
         self.view.addSubview(indicatorView)
 
 
@@ -66,12 +67,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .bind(to: indicatorView.rx.isActive)
             .disposed(by: rx.disposeBag)
 
-        let temp = [SectionMainModel(headerTitle: "Category", items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
-                    SectionMainModel(headerTitle: "Alcoholic",items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
-                    SectionMainModel(headerTitle: "Glass",items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
-                    SectionMainModel(headerTitle: "Instruction",items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)])]
 
-        Observable.just(temp)
+        viewModel.sectionMainModelSubject
             .bind(to: tableView.rx.items(dataSource: viewModel.dataSource))
             .disposed(by: rx.disposeBag)
 
@@ -82,18 +79,18 @@ class MainViewController: UIViewController, ViewModelBindableType {
             })
             .disposed(by: rx.disposeBag)
 
-//        viewModel.drinkName
-//            .bind(to: productLabel.rx.text)
-//            .disposed(by: rx.disposeBag)
+        viewModel.drinkName
+            .bind(to: navigationItem.rx.title)
+            .disposed(by: rx.disposeBag)
 
-//        viewModel.imageName
-//            .map { URL(string: $0)}
-//            .subscribe(onNext: { [unowned self] value in
-//                self.productImageView.kf.setImage(with: value, completionHandler:  { _ in
-//                    viewModel.isNetworking.accept(false)
-//                })
-//            })
-//            .disposed(by: rx.disposeBag)
+        viewModel.imageName
+            .map { URL(string: $0)}
+            .subscribe(onNext: { [unowned self] value in
+                self.stretchyTableHeaderView.imageView.kf.setImage(with: value, completionHandler:  { _ in
+                    viewModel.isNetworking.accept(false)
+                })
+            })
+            .disposed(by: rx.disposeBag)
 
         initialNetworking()
 
@@ -103,7 +100,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return viewModel.dataSource[indexPath.section].items[indexPath.row].height
+        return tableView.estimatedRowHeight
     }
 }
 
