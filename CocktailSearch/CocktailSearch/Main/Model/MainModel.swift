@@ -14,14 +14,15 @@ struct MainModel {
     var height: CGFloat
 }
 
-struct RxMainModel {
+struct SectionMainModel {
+    var headerTitle: String
     var items: [Item]
 }
 
-extension RxMainModel: SectionModelType {
+extension SectionMainModel: SectionModelType {
     typealias Item = MainModel
 
-    init(original: RxMainModel, items: [MainModel]) {
+    init(original: SectionMainModel, items: [MainModel]) {
         self = original
         self.items = items
     }

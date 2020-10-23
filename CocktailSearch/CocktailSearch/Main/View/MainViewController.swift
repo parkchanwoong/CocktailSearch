@@ -66,16 +66,20 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .bind(to: indicatorView.rx.isActive)
             .disposed(by: rx.disposeBag)
 
-        let temp = [RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
-                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
-                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
-                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
-                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
-                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
-                    RxMainModel(items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)])]
+        let temp = [SectionMainModel(headerTitle: "Category", items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
+                    SectionMainModel(headerTitle: "Alcoholic",items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
+                    SectionMainModel(headerTitle: "Glass",items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)]),
+                    SectionMainModel(headerTitle: "Instruction",items: [MainModel(title: "맥주", height: 55), MainModel(title: "양주", height: 100), MainModel(title: "소주", height: 55)])]
 
         Observable.just(temp)
             .bind(to: tableView.rx.items(dataSource: viewModel.dataSource))
+            .disposed(by: rx.disposeBag)
+
+
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [unowned self] index in
+                self.tableView.deselectRow(at: index, animated: true)
+            })
             .disposed(by: rx.disposeBag)
 
 //        viewModel.drinkName
@@ -102,9 +106,10 @@ extension MainViewController: UITableViewDelegate {
         return viewModel.dataSource[indexPath.section].items[indexPath.row].height
     }
 }
+
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        stretchyTableHeaderView.scrollViewDidScroll(scrollView: scrollView)
+//        stretchyTableHeaderView.scrollViewDidScroll(scrollView: scrollView)
 
         if lastContentOffset < scrollView.contentOffset.y {
             self.cocktailButtonBottomConstraint.constant = -TabBarViewController.barHeight

@@ -14,12 +14,24 @@ import RxDataSources
 
 class MainViewModel: CommonViewModel, HasDisposeBag {
 
-    let dataSource: RxTableViewSectionedReloadDataSource<RxMainModel> = {
-        let ds = RxTableViewSectionedReloadDataSource<RxMainModel>(configureCell: { dataSource, tableView, index, item in
+    let dataSource: RxTableViewSectionedReloadDataSource<SectionMainModel> = {
+        let ds = RxTableViewSectionedReloadDataSource<SectionMainModel>(configureCell: { dataSource, tableView, index, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: NormalTableViewCell.identifier, for: index) as! NormalTableViewCell
             cell.configure(item)
             return cell
         })
+
+        ds.titleForHeaderInSection = { dataSource, index in
+            return dataSource.sectionModels[index].headerTitle
+        }
+
+//        ds.canEditRowAtIndexPath = { dataSource, indexPath in
+//            return true
+//        }
+//
+//        ds.canMoveRowAtIndexPath = { dataSource, indexPath in
+//            return true
+//        }
         return ds
     }()
 
