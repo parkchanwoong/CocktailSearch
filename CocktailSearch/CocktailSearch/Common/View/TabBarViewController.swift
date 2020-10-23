@@ -9,6 +9,8 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
+    static let barHeight = TabBarViewController().tabBar.frame.height
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

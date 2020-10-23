@@ -13,18 +13,29 @@ import Kingfisher
 
 class MainViewController: UIViewController, ViewModelBindableType {
     var viewModel: MainViewModel!
+    private var lastContentOffset: CGFloat = 0
 
     private var indicatorView: IndicatorView!
-    @IBOutlet weak var productLabel: UILabel!
+    private var stretchyTableHeaderView: StretchyTableHeaderView!
+
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var getCocktailButton: UIButton!
-    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var cocktailButtonBottomConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
         self.indicatorView = IndicatorView.instanceFromNib() as? IndicatorView
+        stretchyTableHeaderView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 350))
+
+        self.tableView.tableHeaderView = stretchyTableHeaderView
+        self.tableView.tableFooterView = UIView()
         self.view.addSubview(indicatorView)
+
+
+        tableView.rx.setDelegate(self).disposed(by: rx.disposeBag)
+        tableView.register(NormalTableViewCell.nib, forCellReuseIdentifier: NormalTableViewCell.identifier)
         
         self.indicatorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.indicatorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
@@ -40,8 +51,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .map { $0?.drinks?.first}
             .subscribe(onNext: { [weak self] value in
                 guard let self = self else { return }
-                self.productLabel.text = value?.strDrink
-                self.productImageView.kf.setImage(with: URL(string: value?.strDrinkThumb ?? ""), completionHandler: { _ in
+                self.navigationItem.title = value?.strDrink ?? ""
+                self.stretchyTableHeaderView.imageView.kf.setImage(with: URL(string: value?.strDrinkThumb ?? ""), completionHandler: { _ in
                     self.viewModel.isNetworking.accept(false)
                 })
             })
@@ -56,14 +67,26 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .bind(to: indicatorView.rx.isActive)
             .disposed(by: rx.disposeBag)
 
+
+        viewModel.sectionMainModelSubject
+            .bind(to: tableView.rx.items(dataSource: viewModel.dataSource))
+            .disposed(by: rx.disposeBag)
+
+
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [unowned self] index in
+                self.tableView.deselectRow(at: index, animated: true)
+            })
+            .disposed(by: rx.disposeBag)
+
         viewModel.drinkName
-            .bind(to: productLabel.rx.text)
+            .bind(to: navigationItem.rx.title)
             .disposed(by: rx.disposeBag)
 
         viewModel.imageName
             .map { URL(string: $0)}
             .subscribe(onNext: { [unowned self] value in
-                self.productImageView.kf.setImage(with: value, completionHandler:  { _ in
+                self.stretchyTableHeaderView.imageView.kf.setImage(with: value, completionHandler:  { _ in
                     viewModel.isNetworking.accept(false)
                 })
             })
@@ -73,4 +96,29 @@ class MainViewController: UIViewController, ViewModelBindableType {
 
     }
 
+}
+extension MainViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.estimatedRowHeight
+    }
+}
+
+extension MainViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.layoutIfNeeded()
+        stretchyTableHeaderView.scrollViewDidScroll(scrollView: scrollView)
+
+        if lastContentOffset < scrollView.contentOffset.y {
+            self.cocktailButtonBottomConstraint.constant = -TabBarViewController.barHeight
+        } else {
+            self.cocktailButtonBottomConstraint.constant = 10
+        }
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            self.view.layoutIfNeeded()
+        }
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastContentOffset = scrollView.contentOffset.y
+    }
 }

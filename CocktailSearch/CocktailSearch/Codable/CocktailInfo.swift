@@ -12,5 +12,9 @@ struct CocktailInfo: Codable {
         let idDrink: String?
         let strDrink: String?
         let strDrinkThumb: String?
+        let strCategory: String?
+        let strAlcoholic: String?
+        let strGlass: String?
+        let strInstructions: String?
     }
 }
