@@ -24,14 +24,6 @@ class MainViewModel: CommonViewModel, HasDisposeBag {
         ds.titleForHeaderInSection = { dataSource, index in
             return dataSource.sectionModels[index].headerTitle
         }
-
-//        ds.canEditRowAtIndexPath = { dataSource, indexPath in
-//            return true
-//        }
-//
-//        ds.canMoveRowAtIndexPath = { dataSource, indexPath in
-//            return true
-//        }
         return ds
     }()
 
@@ -39,6 +31,8 @@ class MainViewModel: CommonViewModel, HasDisposeBag {
 
     var drinkName = PublishSubject<String>()
     var imageName = PublishSubject<String>()
+
+    var sectionMainModelSubject = PublishSubject<[SectionMainModel]>()
 
     /// 통신중을 나타내는 옵저버블 변수
     var isNetworking = BehaviorRelay<Bool>(value: false)
@@ -51,8 +45,13 @@ class MainViewModel: CommonViewModel, HasDisposeBag {
                 .subscribe(onNext: { [weak self] value in
                     guard let self = self else { return }
                     guard let drink = value?.drinks?.first else { return }
+                    let sectionModels = [SectionMainModel(headerTitle: "Category", items: [MainModel(title: drink.strCategory ?? "", height: 44)]),
+                                         SectionMainModel(headerTitle: "Alcoholic", items: [MainModel(title: drink.strAlcoholic ?? "", height: 44)]),
+                                         SectionMainModel(headerTitle: "Glass", items: [MainModel(title: drink.strGlass ?? "", height: 44)]),
+                                         SectionMainModel(headerTitle: "Instruction", items: [MainModel(title: drink.strInstructions ?? "", height: 44)])]
                     self.drinkName.onNext(drink.strDrink ?? "")
                     self.imageName.onNext(drink.strDrinkThumb ?? "")
+                    self.sectionMainModelSubject.onNext(sectionModels)
                 })
                 .disposed(by: self.disposeBag)
 
