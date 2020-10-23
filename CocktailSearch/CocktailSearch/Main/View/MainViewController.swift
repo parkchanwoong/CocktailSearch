@@ -109,7 +109,8 @@ extension MainViewController: UITableViewDelegate {
 
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        stretchyTableHeaderView.scrollViewDidScroll(scrollView: scrollView)
+        self.view.layoutIfNeeded()
+        stretchyTableHeaderView.scrollViewDidScroll(scrollView: scrollView)
 
         if lastContentOffset < scrollView.contentOffset.y {
             self.cocktailButtonBottomConstraint.constant = -TabBarViewController.barHeight
